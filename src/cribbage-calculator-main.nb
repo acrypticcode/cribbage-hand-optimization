@@ -1,0 +1,3385 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    139639,       3377]
+NotebookOptionsPosition[    130550,       3209]
+NotebookOutlinePosition[    130990,       3226]
+CellTagsIndexPosition[    130947,       3223]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"ranks", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<Ace\>\"", ",", "\"\<2\>\"", ",", "\"\<3\>\"", ",", "\"\<4\>\"", ",", 
+    "\"\<5\>\"", ",", "\"\<6\>\"", ",", "\"\<7\>\"", ",", "\"\<8\>\"", ",", 
+    "\"\<9\>\"", ",", "\"\<10\>\"", ",", "\"\<Jack\>\"", ",", "\"\<Queen\>\"",
+     ",", "\"\<King\>\""}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.9311733407431927`*^9, 3.931173419153368*^9}, {
+  3.931173732647236*^9, 3.931173737650833*^9}, {3.931173951536106*^9, 
+  3.9311739613250217`*^9}, {3.9311740336934967`*^9, 3.9311740403928547`*^9}, {
+  3.9311768071943893`*^9, 3.9311768125851173`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"4818503a-c322-3d4d-8815-b6ac1806039a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Ace\"\>", ",", "\<\"2\"\>", ",", "\<\"3\"\>", ",", "\<\"4\"\>",
+    ",", "\<\"5\"\>", ",", "\<\"6\"\>", ",", "\<\"7\"\>", ",", "\<\"8\"\>", 
+   ",", "\<\"9\"\>", ",", "\<\"10\"\>", ",", "\<\"Jack\"\>", 
+   ",", "\<\"Queen\"\>", ",", "\<\"King\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.9311768231940956`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"d9a73d73-de92-c34a-bd8f-e6e95e133c4e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"suites", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<Clubs\>\"", ",", "\"\<Diamonds\>\"", ",", "\"\<Hearts\>\"", ",", 
+    "\"\<Spades\>\""}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.931173429216055*^9, 3.9311734545316486`*^9}, {
+  3.9311751060496845`*^9, 3.931175107062931*^9}, {3.9311768152829227`*^9, 
+  3.9311768186328697`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"0cb3b7e0-51c2-8548-8482-871f17205f02"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Clubs\"\>", ",", "\<\"Diamonds\"\>", ",", "\<\"Hearts\"\>", 
+   ",", "\<\"Spades\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.931176825467331*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"75016040-5e89-a144-a37c-8116cbe1e376"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"findValue", "[", "rank_Integer", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"rank", "<=", "10"}], ",", "rank", ",", "10"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.931173673525057*^9, 3.9311737079190617`*^9}, {
+  3.9311739727176113`*^9, 3.931173992149082*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"f65b4928-f1b0-564e-a3c1-9cb319e1a4f5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateCard", "[", 
+    RowBox[{"rank_Integer", ",", "suite_Integer"}], "]"}], ":=", 
+   RowBox[{"<|", 
+    RowBox[{
+     RowBox[{"\"\<rank\>\"", "->", 
+      RowBox[{"ranks", "[", 
+       RowBox[{"[", "rank", "]"}], "]"}]}], ",", 
+     RowBox[{"\"\<suite\>\"", "->", 
+      RowBox[{"suites", "[", 
+       RowBox[{"[", "suite", "]"}], "]"}]}], ",", 
+     RowBox[{"\"\<value\>\"", "->", 
+      RowBox[{"findValue", "[", "rank", "]"}]}]}], "|>"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.931172712084078*^9, 3.931172718319046*^9}, {
+   3.9311727706015205`*^9, 3.9311727879060555`*^9}, {3.9311731977480907`*^9, 
+   3.931173201171995*^9}, {3.9311736044630966`*^9, 3.931173610436762*^9}, {
+   3.931174016525915*^9, 3.931174072936409*^9}, 3.931175103023134*^9, {
+   3.931175828141157*^9, 3.931175831502016*^9}, {3.93117703666564*^9, 
+   3.931177043816593*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"c6ac0e0e-41b1-2249-849b-bf351aa6be35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateOrderedDeck", "[", "]"}], ":=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"generateCard", "[", 
+       RowBox[{"r", ",", "s"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"s", ",", "4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"r", ",", "13"}], "}"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9311727988200836`*^9, 3.93117281149732*^9}, {
+   3.931172898200981*^9, 3.931172914668396*^9}, {3.9311748343592377`*^9, 
+   3.9311749225808945`*^9}, 3.9311750980481586`*^9, {3.9311773318865223`*^9, 
+   3.93117733626556*^9}, {3.931177509644678*^9, 3.9311775156542854`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"b236dc8b-db76-6242-9df2-7f17baebce4d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateShuffledDeck", "[", "]"}], ":=", " ", 
+   RowBox[{"RandomSample", "[", 
+    RowBox[{
+     RowBox[{"generateOrderedDeck", "[", "]"}], ",", "52"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9311729188859215`*^9, 3.9311729254809265`*^9}, {
+   3.931174936628418*^9, 3.931174953072262*^9}, {3.931175016165844*^9, 
+   3.9311750180235004`*^9}, {3.931175065041588*^9, 3.931175096148527*^9}, 
+   3.9311774331644096`*^9},
+ CellLabel->"In[21]:=",ExpressionUUID->"2492bb77-0a40-c548-a349-780d5a3cf8d0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"score15s", "[", "hand_List", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "sums", "}"}], ",", 
+     RowBox[{
+      RowBox[{"sums", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", "\"\<value\>\"", "]"}], "&"}], "/@", "#"}], 
+          "]"}], "&"}], "/@", 
+        RowBox[{"Subsets", "[", "randHand", "]"}]}]}], ";", 
+      RowBox[{"2", "*", 
+       RowBox[{"Count", "[", 
+        RowBox[{"sums", ",", "15"}], "]"}]}]}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9311752176860085`*^9, 3.9311752680361214`*^9}, {
+   3.9311753087986965`*^9, 3.931175321305422*^9}, {3.9311754059959164`*^9, 
+   3.9311754097400265`*^9}, {3.931175793728222*^9, 3.9311758371455975`*^9}, {
+   3.9311759105429916`*^9, 3.9311759375614834`*^9}, {3.9311761253954887`*^9, 
+   3.931176147906231*^9}, {3.9311767066767597`*^9, 3.9311767153623543`*^9}, 
+   3.931195576896799*^9, {3.9311958241187515`*^9, 3.9311958489139595`*^9}, {
+   3.931195903364496*^9, 3.931195920022007*^9}, {3.93119931517194*^9, 
+   3.9311993169711018`*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"21e64e91-b557-c947-a693-7c9b20e0f46d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"scoreNob", "[", 
+    RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "cutSuite", "}"}], ",", 
+     RowBox[{
+      RowBox[{"cutSuite", "=", 
+       RowBox[{"cutCard", "[", "\"\<suite\>\"", "]"}]}], ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"AnyTrue", "[", 
+         RowBox[{"hand", ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "[", "\"\<rank\>\"", "]"}], "==", "\"\<Jack\>\""}],
+              "&&", 
+             RowBox[{
+              RowBox[{"#", "[", "\"\<suite\>\"", "]"}], "==", "cutSuite"}]}], 
+            ")"}], "&"}]}], "]"}], ",", "1", ",", "0"}], "]"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9311957349465027`*^9, 3.9311957478828297`*^9}, 
+   3.9311959155464325`*^9, {3.9311959509175167`*^9, 3.9311959905601788`*^9}, {
+   3.931196097580637*^9, 3.931196180782339*^9}, {3.9311963043432274`*^9, 
+   3.9311964063484783`*^9}, {3.9311968871051273`*^9, 
+   3.9311969453487606`*^9}, {3.9311974772781887`*^9, 3.93119748280575*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"b0f9620a-ae74-664e-acd5-aaed8e9be4a6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"scorePairs", "[", "hand_List", "]"}], ":=", 
+   RowBox[{"2", "*", 
+    RowBox[{"Total", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", "\"\<rank\>\"", "]"}], "==", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "[", "\"\<rank\>\"", "]"}]}], 
+          ")"}], ",", "1", ",", "0"}], "]"}], "&"}], "/@", 
+      RowBox[{"Subsets", "[", 
+       RowBox[{"hand", ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9311975385072956`*^9, 3.931197539198614*^9}, {
+  3.9311977024280376`*^9, 3.931197716296461*^9}, {3.9311979622140064`*^9, 
+  3.931198079598095*^9}, {3.931198184396057*^9, 3.931198202332884*^9}, {
+  3.9311987883492165`*^9, 3.9311987925754356`*^9}, {3.931199051965103*^9, 
+  3.9311990595209866`*^9}, {3.931199095625839*^9, 3.931199105847046*^9}, {
+  3.9311991825218487`*^9, 3.93119921982321*^9}, {3.931199280440279*^9, 
+  3.931199284238098*^9}},
+ CellLabel->"In[77]:=",ExpressionUUID->"af922134-5a8a-c04c-b945-85ddd1a3b2aa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"scoreFlush", "[", "hand_List", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "firstCardSuite", "}"}], ",", 
+     RowBox[{
+      RowBox[{"firstCardSuite", "=", 
+       RowBox[{
+        RowBox[{"hand", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "[", "\"\<suite\>\"", "]"}]}], ";", 
+      RowBox[{"AllTrue", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"#", "[", "\"\<suite\>\"", "]"}], "==", "firstCardSuite"}],
+           ")"}], "&"}], "/@", 
+        RowBox[{"hand", "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ";;", "4"}], "]"}], "]"}]}], "]"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9311994637625904`*^9, 3.9311994735822563`*^9}, {
+   3.9311996228666058`*^9, 3.9311996996088123`*^9}, {3.9311998739994564`*^9, 
+   3.9311999230874004`*^9}, {3.9312000380267544`*^9, 3.931200092163927*^9}, 
+   3.931203580132637*^9},
+ CellLabel->"In[81]:=",ExpressionUUID->"4b63e768-3226-6f42-9f33-3cce6949d089"],
+
+Cell[CellGroupData[{
+
+Cell["Test", "Subsection",
+ CellChangeTimes->{{3.931176857577894*^9, 
+  3.931176858149618*^9}},ExpressionUUID->"52de5aac-2502-3d49-9d69-\
+286174c9323c"],
+
+Cell[CellGroupData[{
+
+Cell["FindValue", "Subsubsection",
+ CellChangeTimes->{{3.93117690521002*^9, 
+  3.931176907311981*^9}},ExpressionUUID->"b5d1c752-e380-5f47-a3ab-\
+4b1ba72b2037"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findValue", "[", "7", "]"}]], "Input",
+ CellChangeTimes->{{3.931176862881201*^9, 3.931176869623724*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"f680821f-2281-ec4f-b44f-8fb9245b4070"],
+
+Cell[BoxData["7"], "Output",
+ CellChangeTimes->{3.931176871602825*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"4e230a2c-1d9d-f841-ac4e-1baeacf0199b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findValue", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.931176872820751*^9, 3.9311768776953945`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"6f97a8c5-fa97-d942-8447-ac7cd9b1d4b4"],
+
+Cell[BoxData["10"], "Output",
+ CellChangeTimes->{3.931176878637045*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"ed392053-5aa0-1743-ba91-01266631dc70"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findValue", "[", "11", "]"}]], "Input",
+ CellChangeTimes->{{3.9311768797466297`*^9, 3.931176882284279*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"c4648e23-8483-6040-b60f-d550e2795660"],
+
+Cell[BoxData["10"], "Output",
+ CellChangeTimes->{3.9311768837443542`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"7701f93e-a159-4748-917b-0175583f14c7"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["GenerateCard", "Subsubsection",
+ CellChangeTimes->{{3.931176973512533*^9, 
+  3.9311769757464123`*^9}},ExpressionUUID->"cf545680-ec07-d74a-8e7d-\
+1a600bacaba3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"generateCard", "[", 
+  RowBox[{"11", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9311769862578716`*^9, 3.931177008542185*^9}, {
+  3.931177065135559*^9, 3.931177076508478*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"44c544de-6a90-7b46-ae70-3a11ac1afa24"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+   RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+   RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.9311770118675613`*^9, {3.93117705535408*^9, 3.9311770773879795`*^9}},
+ CellLabel->"Out[16]=",ExpressionUUID->"91f40f44-e02a-c142-8c80-dd6c6e8593ad"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["generateOrderedDeck", "Subsubsection",
+ CellChangeTimes->{{3.93117728612105*^9, 
+  3.931177295960554*^9}},ExpressionUUID->"4dfcc197-600c-bc4d-8d84-\
+a6b4706f85e0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"generateOrderedDeck", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.931177298902891*^9, 3.9311773016893272`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"53e8b3a8-10b6-1245-875f-0a5bf27735e9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9311773030265656`*^9, 3.9311773404580536`*^9, 
+  3.931177526936348*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"22283bbd-3908-4a48-99a1-94f1fe2f1cbc"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.931177360956587*^9, 
+  3.931177362488556*^9}},ExpressionUUID->"ddb9db00-a1ee-4b42-aeb5-\
+387271a889dc"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["generateShuffledDeck", "Subsubsection",
+ CellChangeTimes->{{3.931177371770626*^9, 
+  3.931177376664139*^9}},ExpressionUUID->"43539ffd-752f-9545-9090-\
+d9c9a55c5acf"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"generateOrderedDeck", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9311774814596996`*^9, 3.9311774940814533`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"162bb91e-9cb7-dc4e-92e5-893010eeef75"],
+
+Cell[BoxData["52"], "Output",
+ CellChangeTimes->{3.931177496037821*^9, 3.931177544675581*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"e0d8b7fe-ceeb-cc49-8c31-dd4d0561e0fd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"generateShuffledDeck", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.9311774107472897`*^9, 3.9311774161674957`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"615728d1-af89-1a47-8ef6-570468a7f988"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"7\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "7"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Ace\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"6\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "6"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"3\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "3"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"10\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Queen\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.931177417491829*^9, 3.931177440612911*^9}, 
+   3.931177547872053*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"48526ce4-1d7b-9244-a432-4734b4e862d0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["score15s", "Subsubsection",
+ CellChangeTimes->{{3.9311943349392357`*^9, 
+  3.9311943366956444`*^9}},ExpressionUUID->"1fb8cb2f-a159-7d49-beb3-\
+9c1ffe6a375a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"randHand", "=", 
+  RowBox[{
+   RowBox[{"generateShuffledDeck", "[", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ";;", "5"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.931194344551035*^9, 3.931194373110895*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"e9c57d87-a9c4-194a-abf3-80ff02c32ae9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9311943769564095`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"bffe6226-db50-ef43-87ed-c95ef36f2cba"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"score15s", "[", "randHand", "]"}]], "Input",
+ CellChangeTimes->{{3.931194387672371*^9, 3.931194397634779*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"2ef433c8-ee69-a243-8a99-1de6f81464bb"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.9311943987333565`*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"d025ee06-5c9b-a94b-aa04-820f8a64f3f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"testSums", "=", 
+  RowBox[{"Total", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "[", "\"\<value\>\"", "]"}], "&"}], "/@", 
+    RowBox[{"Subsets", "[", "randHand", "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.931194502245161*^9, 3.931194514118458*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"3c3af098-4083-ae41-9eb8-28308f0ac433"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+    "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+    "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+    "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}], "+", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], "[", "\<\"value\"\>", "]"}]}]], "Output",
+ CellChangeTimes->{3.931194515135193*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"4bb0432f-74a2-7e4f-a94a-fa1995a04e3f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Subsets", "[", "randHand", "]"}]], "Input",
+ CellChangeTimes->{{3.9311945539781685`*^9, 3.93119455872209*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"7c5f7839-2812-c54a-b5b4-1ba77c6cfb26"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9311945597173595`*^9},
+ CellLabel->"Out[31]=",ExpressionUUID->"a2a16c6d-e642-e74c-99c8-235ccb2d8188"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rand1", "=", 
+  RowBox[{"randHand", "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9311946411765614`*^9, 3.931194647965679*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"32117371-b5af-064b-bffe-760314a9160d"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+   RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+   RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.931194620054165*^9, 3.9311946494760075`*^9}},
+ CellLabel->"Out[33]=",ExpressionUUID->"ae63eabe-0c13-af42-8da0-bca0ee92f9fa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rand1", "[", "\"\<value\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.9311946616270065`*^9, 3.9311946682689686`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"1ff2882e-265a-4e49-a60c-43316f0b67cd"],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{3.931194669148466*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"e9e5efb6-9826-3540-85bb-5e37aec8d509"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"#", "[", "\"\<value\>\"", "]"}], "&"}], "/@", 
+  RowBox[{"{", "rand1", "}"}]}]], "Input",
+ CellChangeTimes->{{3.931194695416134*^9, 3.931194697528084*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"733aaea7-49d5-f146-a2f8-28745c1a5c24"],
+
+Cell[BoxData[
+ RowBox[{"{", "2", "}"}]], "Output",
+ CellChangeTimes->{3.9311946986345253`*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"a895146a-e833-4a45-a69f-e4da12e4a15c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"#", "&"}], "/@", 
+  RowBox[{"Subsets", "[", "randHand", "]"}]}]], "Input",
+ CellChangeTimes->{{3.9311949608350506`*^9, 3.9311949758131657`*^9}, {
+  3.931195018329485*^9, 
+  3.9311950480250187`*^9}},ExpressionUUID->"9fb28455-8f2c-b943-a6b3-\
+55243173c9c6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+      RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+      RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"2\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "2"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"8\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "8"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+     ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+       RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+       RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}]}],
+     "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.9311949800154343`*^9, 3.931195037416294*^9},
+ CellLabel->"Out[37]=",ExpressionUUID->"adec9efe-8614-b048-aa53-9b0ea20ebd33"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", "\"\<value\>\"", "]"}], "&"}], "/@", "#"}], "]"}], 
+   "&"}], "/@", 
+  RowBox[{"Subsets", "[", "randHand", "]"}]}]], "Input",
+ CellChangeTimes->{{3.9311954725920296`*^9, 3.931195543493145*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"261e803c-a171-504c-933a-f95f2c637d54"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "2", ",", "8", ",", "5", ",", "10", ",", "5", ",", "10", ",", "7",
+    ",", "12", ",", "7", ",", "13", ",", "18", ",", "13", ",", "15", ",", 
+   "10", ",", "15", ",", "15", ",", "20", ",", "15", ",", "17", ",", "12", 
+   ",", "17", ",", "23", ",", "18", ",", "23", ",", "20", ",", "25", ",", 
+   "20", ",", "25", ",", "22", ",", "28", ",", "30"}], "}"}]], "Output",
+ CellChangeTimes->{{3.9311954914497757`*^9, 3.931195544660282*^9}},
+ CellLabel->"Out[41]=",ExpressionUUID->"d76e1bd7-f847-984d-8606-c400f0cfcbf5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"score15s", "[", "randHand", "]"}]], "Input",
+ CellChangeTimes->{{3.9311955913096066`*^9, 3.9311955975356903`*^9}},
+ CellLabel->"In[80]:=",ExpressionUUID->"700e1e33-6028-5745-88e7-7720162a6f11"],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.9311955984750957`*^9, 3.931199333506756*^9},
+ CellLabel->"Out[80]=",ExpressionUUID->"65e2e692-8711-ab4a-b24b-04b72e8fe893"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.9311954830458145`*^9, 
+  3.9311954842926216`*^9}},ExpressionUUID->"5b58d8a7-951e-4a4f-8160-\
+ff5a54a22269"],
+
+Cell[BoxData[
+ RowBox[{"testListgenerateCard", "[", 
+  RowBox[{"11", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9311965172120247`*^9, 
+  3.931196560524971*^9}},ExpressionUUID->"3bd356c0-7b1f-bd4f-8d6f-\
+5a1844fc6ceb"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["scoreNob", "Subsubsection",
+ CellChangeTimes->{{3.9311965861923313`*^9, 
+  3.931196587667431*^9}},ExpressionUUID->"e6b25df8-425b-e34c-aede-\
+5290778402c0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nobTestHand", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"generateCard", "[", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"13", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "2"}], "}"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.931196601824011*^9, 3.931196696492779*^9}, {
+  3.931196783864832*^9, 3.9311967856069508`*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"d4e06523-887e-be4c-8395-d07e0dfa45cf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9311967062615147`*^9, 3.931196786602108*^9},
+ CellLabel->"Out[49]=",ExpressionUUID->"5bcf288b-21cc-414a-9d54-08c0f5c43222"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nobTestCut", "=", 
+  RowBox[{"generateCard", "[", 
+   RowBox[{"9", ",", "2"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9311967127056675`*^9, 3.931196740925205*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"a9fd0de1-b343-5742-8a5d-037e6cb00224"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+   RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+   RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.9311967422425385`*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"0ae72ea6-cc1b-3646-8008-78d0bafe0ec3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scoreNob", "[", 
+  RowBox[{"nobTestHand", ",", "nobTestCut"}], "]"}]], "Input",
+ CellChangeTimes->{{3.931196745716543*^9, 3.9311967576231594`*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"329a0601-56e2-e54a-be44-b6f65e517472"],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{
+  3.9311967591648827`*^9, 3.931196793309454*^9, 3.9311969210046997`*^9, 
+   3.9311969521565266`*^9, 3.931197253325144*^9, {3.9311974936971188`*^9, 
+   3.93119750110174*^9}},
+ CellLabel->"Out[62]=",ExpressionUUID->"cc61a100-d289-fe43-a2c3-c59f1706b793"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nobTestCut", "[", "\"\<suite\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.931196835954817*^9, 3.9311968401238384`*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"b15f8872-8463-cb4a-a3db-a58dc06ff959"],
+
+Cell[BoxData["\<\"Diamonds\"\>"], "Output",
+ CellChangeTimes->{3.9311968410452404`*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"d9059eaa-19fa-ce43-b134-85ec09d44c52"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"nobTestCut2", "=", 
+  RowBox[{"generateCard", "[", 
+   RowBox[{"9", ",", "3"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9311971670732327`*^9, 3.9311971938477345`*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"cacb1b49-2493-d148-94d2-cca72942ceee"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"9\"\>"}], ",", 
+   RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+   RowBox[{"\<\"value\"\>", "\[Rule]", "9"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.931197195513569*^9},
+ CellLabel->"Out[56]=",ExpressionUUID->"1393ed3c-5c05-cf49-bc25-26a3e8ece212"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scoreNob", "[", 
+  RowBox[{"nobTestHand", ",", " ", "nobTestCut2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.931197197985197*^9, 3.9311972102358494`*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"691440a3-7d74-9041-a78c-7c9377f8949b"],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{
+  3.9311972112418175`*^9, {3.931197496680393*^9, 3.9311975037006817`*^9}},
+ CellLabel->"Out[63]=",ExpressionUUID->"021eec4f-a14d-d14b-9029-228628904d6e"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["scorePairs", "Subsubsection",
+ CellChangeTimes->{{3.931198211411337*^9, 3.931198220573143*^9}, {
+  3.9311983236058083`*^9, 
+  3.931198327700159*^9}},ExpressionUUID->"26c5848a-eb2b-9244-b95f-\
+fe908d239356"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pairTestHand", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"generateCard", "[", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "4"}], "}"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.931198359946064*^9, 3.9311983889685383`*^9}, {
+  3.9311984813528824`*^9, 3.931198483118635*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"a2f5990d-6fee-6c4e-a25f-4384ab2b1c2b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Hearts\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Diamonds\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9311984537728863`*^9, 3.931198484283291*^9, 
+  3.931199247747099*^9},
+ CellLabel->"Out[75]=",ExpressionUUID->"9fea3570-05df-be4a-afa3-57089bc84d99"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pairTestCut", "=", 
+  RowBox[{"generateCard", "[", 
+   RowBox[{"4", ",", "4"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.931198442048723*^9, 3.9311984709163723`*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"475b294e-03ba-d243-b367-1e10fdc365c4"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+   RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Spades\"\>"}], ",", 
+   RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.931198472103876*^9},
+ CellLabel->"Out[65]=",ExpressionUUID->"4bd6cfa0-9ce9-b749-a687-7a14a2e4ef18"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scorePairs", "[", "pairTestHand", "]"}]], "Input",
+ CellChangeTimes->{{3.931198764247879*^9, 3.931198771403532*^9}},
+ CellLabel->"In[78]:=",ExpressionUUID->"6ebf109b-9a06-8b42-9632-e94c4f5d51dd"],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{
+  3.93119879885375*^9, 3.931199195020727*^9, {3.931199229437361*^9, 
+   3.9311992524152565`*^9}, 3.9311992904220734`*^9},
+ CellLabel->"Out[78]=",ExpressionUUID->"3c81400e-8e51-274e-b2e0-7d4331f8d698"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["scoreFlush", "Subsubsection",
+ CellChangeTimes->{{3.93120359207992*^9, 3.9312035947315426`*^9}, {
+  3.9312036474109497`*^9, 
+  3.931203648227997*^9}},ExpressionUUID->"6f0744e0-7a56-4743-adc4-\
+0562bb9c0e15"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"flushTestHand", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"generateCard", "[", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"13", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"11", ",", "1"}], "}"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.9312041639862328`*^9, 3.931204174263073*^9}},
+ CellLabel->"In[82]:=",ExpressionUUID->"86399acf-822f-ea45-a4c4-44e6baf8e925"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"4\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "4"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"5\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "5"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"King\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"rank\"\>", "\[Rule]", "\<\"Jack\"\>"}], ",", 
+     RowBox[{"\<\"suite\"\>", "\[Rule]", "\<\"Clubs\"\>"}], ",", 
+     RowBox[{"\<\"value\"\>", "\[Rule]", "10"}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9312041788407764`*^9},
+ CellLabel->"Out[82]=",ExpressionUUID->"bf98cbd7-f2ab-de47-acd0-a1ba78b395f7"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152, 651.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"747a15eb-9750-8d4b-8d82-185ad83071e4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 695, 12, 28, "Input",ExpressionUUID->"4818503a-c322-3d4d-8815-b6ac1806039a"],
+Cell[1278, 36, 434, 7, 32, "Output",ExpressionUUID->"d9a73d73-de92-c34a-bd8f-e6e95e133c4e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1749, 48, 433, 9, 28, "Input",ExpressionUUID->"0cb3b7e0-51c2-8548-8482-871f17205f02"],
+Cell[2185, 59, 270, 5, 32, "Output",ExpressionUUID->"75016040-5e89-a144-a37c-8116cbe1e376"]
+}, Open  ]],
+Cell[2470, 67, 416, 10, 28, "Input",ExpressionUUID->"f65b4928-f1b0-564e-a3c1-9cb319e1a4f5"],
+Cell[2889, 79, 982, 21, 28, "Input",ExpressionUUID->"c6ac0e0e-41b1-2249-849b-bf351aa6be35"],
+Cell[3874, 102, 770, 17, 28, "Input",ExpressionUUID->"b236dc8b-db76-6242-9df2-7f17baebce4d"],
+Cell[4647, 121, 554, 12, 28, "Input",ExpressionUUID->"2492bb77-0a40-c548-a349-780d5a3cf8d0"],
+Cell[5204, 135, 1248, 28, 28, "Input",ExpressionUUID->"21e64e91-b557-c947-a693-7c9b20e0f46d"],
+Cell[6455, 165, 1247, 30, 48, "Input",ExpressionUUID->"b0f9620a-ae74-664e-acd5-aaed8e9be4a6"],
+Cell[7705, 197, 1249, 29, 28, "Input",ExpressionUUID->"af922134-5a8a-c04c-b945-85ddd1a3b2aa"],
+Cell[8957, 228, 1049, 27, 28, "Input",ExpressionUUID->"4b63e768-3226-6f42-9f33-3cce6949d089"],
+Cell[CellGroupData[{
+Cell[10031, 259, 152, 3, 54, "Subsection",ExpressionUUID->"52de5aac-2502-3d49-9d69-286174c9323c"],
+Cell[CellGroupData[{
+Cell[10208, 266, 159, 3, 45, "Subsubsection",ExpressionUUID->"b5d1c752-e380-5f47-a3ab-4b1ba72b2037"],
+Cell[CellGroupData[{
+Cell[10392, 273, 206, 3, 28, "Input",ExpressionUUID->"f680821f-2281-ec4f-b44f-8fb9245b4070"],
+Cell[10601, 278, 148, 2, 32, "Output",ExpressionUUID->"4e230a2c-1d9d-f841-ac4e-1baeacf0199b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10786, 285, 209, 3, 28, "Input",ExpressionUUID->"6f97a8c5-fa97-d942-8447-ac7cd9b1d4b4"],
+Cell[10998, 290, 149, 2, 32, "Output",ExpressionUUID->"ed392053-5aa0-1743-ba91-01266631dc70"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11184, 297, 210, 3, 28, "Input",ExpressionUUID->"c4648e23-8483-6040-b60f-d550e2795660"],
+Cell[11397, 302, 152, 2, 32, "Output",ExpressionUUID->"7701f93e-a159-4748-917b-0175583f14c7"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11598, 310, 165, 3, 37, "Subsubsection",ExpressionUUID->"cf545680-ec07-d74a-8e7d-1a600bacaba3"],
+Cell[CellGroupData[{
+Cell[11788, 317, 285, 5, 28, "Input",ExpressionUUID->"44c544de-6a90-7b46-ae70-3a11ac1afa24"],
+Cell[12076, 324, 443, 9, 32, "Output",ExpressionUUID->"91f40f44-e02a-c142-8c80-dd6c6e8593ad"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12568, 339, 169, 3, 37, "Subsubsection",ExpressionUUID->"4dfcc197-600c-bc4d-8d84-a6b4706f85e0"],
+Cell[CellGroupData[{
+Cell[12762, 346, 214, 3, 28, "Input",ExpressionUUID->"53e8b3a8-10b6-1245-875f-0a5bf27735e9"],
+Cell[12979, 351, 13825, 317, 356, "Output",ExpressionUUID->"22283bbd-3908-4a48-99a1-94f1fe2f1cbc"]
+}, Open  ]],
+Cell[26819, 671, 152, 3, 24, "Input",ExpressionUUID->"ddb9db00-a1ee-4b42-aeb5-387271a889dc"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[27008, 679, 171, 3, 37, "Subsubsection",ExpressionUUID->"43539ffd-752f-9545-9090-d9c9a55c5acf"],
+Cell[CellGroupData[{
+Cell[27204, 686, 249, 4, 28, "Input",ExpressionUUID->"162bb91e-9cb7-dc4e-92e5-893010eeef75"],
+Cell[27456, 692, 172, 2, 32, "Output",ExpressionUUID->"e0d8b7fe-ceeb-cc49-8c31-dd4d0561e0fd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27665, 699, 217, 3, 28, "Input",ExpressionUUID->"615728d1-af89-1a47-8ef6-570468a7f988"],
+Cell[27885, 704, 13824, 317, 356, "Output",ExpressionUUID->"48526ce4-1d7b-9244-a432-4734b4e862d0"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[41758, 1027, 163, 3, 37, "Subsubsection",ExpressionUUID->"1fb8cb2f-a159-7d49-beb3-9c1ffe6a375a"],
+Cell[CellGroupData[{
+Cell[41946, 1034, 322, 7, 28, "Input",ExpressionUUID->"e9c57d87-a9c4-194a-abf3-80ff02c32ae9"],
+Cell[42271, 1043, 1480, 34, 52, "Output",ExpressionUUID->"bffe6226-db50-ef43-87ed-c95ef36f2cba"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43788, 1082, 213, 3, 28, "Input",ExpressionUUID->"2ef433c8-ee69-a243-8a99-1de6f81464bb"],
+Cell[44004, 1087, 151, 2, 32, "Output",ExpressionUUID->"d025ee06-5c9b-a94b-aa04-820f8a64f3f5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44192, 1094, 364, 8, 28, "Input",ExpressionUUID->"3c3af098-4083-ae41-9eb8-28308f0ac433"],
+Cell[44559, 1104, 24392, 573, 604, "Output",ExpressionUUID->"4bb0432f-74a2-7e4f-a94a-fa1995a04e3f"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[68988, 1682, 213, 3, 24, "Input",ExpressionUUID->"7c5f7839-2812-c54a-b5b4-1ba77c6cfb26"],
+Cell[69204, 1687, 23137, 542, 604, "Output",ExpressionUUID->"a2a16c6d-e642-e74c-99c8-235ccb2d8188"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[92378, 2234, 259, 5, 24, "Input",ExpressionUUID->"32117371-b5af-064b-bffe-760314a9160d"],
+Cell[92640, 2241, 414, 8, 32, "Output",ExpressionUUID->"ae63eabe-0c13-af42-8da0-bca0ee92f9fa"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93091, 2254, 219, 3, 28, "Input",ExpressionUUID->"1ff2882e-265a-4e49-a60c-43316f0b67cd"],
+Cell[93313, 2259, 149, 2, 32, "Output",ExpressionUUID->"e9e5efb6-9826-3540-85bb-5e37aec8d509"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93499, 2266, 281, 6, 28, "Input",ExpressionUUID->"733aaea7-49d5-f146-a2f8-28745c1a5c24"],
+Cell[93783, 2274, 173, 3, 32, "Output",ExpressionUUID->"a895146a-e833-4a45-a69f-e4da12e4a15c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93993, 2282, 290, 7, 28, "Input",ExpressionUUID->"9fb28455-8f2c-b943-a6b3-55243173c9c6"],
+Cell[94286, 2291, 23159, 542, 604, "Output",ExpressionUUID->"adec9efe-8614-b048-aa53-9b0ea20ebd33"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117482, 2838, 384, 10, 28, "Input",ExpressionUUID->"261e803c-a171-504c-933a-f95f2c637d54"],
+Cell[117869, 2850, 564, 9, 32, "Output",ExpressionUUID->"d76e1bd7-f847-984d-8606-c400f0cfcbf5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[118470, 2864, 217, 3, 28, "Input",ExpressionUUID->"700e1e33-6028-5745-88e7-7720162a6f11"],
+Cell[118690, 2869, 173, 2, 32, "Output",ExpressionUUID->"65e2e692-8711-ab4a-b24b-04b72e8fe893"]
+}, Open  ]],
+Cell[118878, 2874, 156, 3, 28, "Input",ExpressionUUID->"5b58d8a7-951e-4a4f-8160-ff5a54a22269"],
+Cell[119037, 2879, 225, 5, 28, "Input",ExpressionUUID->"3bd356c0-7b1f-bd4f-8d6f-5a1844fc6ceb"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[119299, 2889, 161, 3, 37, "Subsubsection",ExpressionUUID->"e6b25df8-425b-e34c-aede-5290778402c0"],
+Cell[CellGroupData[{
+Cell[119485, 2896, 768, 22, 28, "Input",ExpressionUUID->"d4e06523-887e-be4c-8395-d07e0dfa45cf"],
+Cell[120256, 2920, 1245, 28, 52, "Output",ExpressionUUID->"5bcf288b-21cc-414a-9d54-08c0f5c43222"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121538, 2953, 268, 5, 28, "Input",ExpressionUUID->"a9fd0de1-b343-5742-8a5d-037e6cb00224"],
+Cell[121809, 2960, 392, 8, 32, "Output",ExpressionUUID->"0ae72ea6-cc1b-3646-8008-78d0bafe0ec3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122238, 2973, 250, 4, 28, "Input",ExpressionUUID->"329a0601-56e2-e54a-be44-b6f65e517472"],
+Cell[122491, 2979, 301, 5, 32, "Output",ExpressionUUID->"cc61a100-d289-fe43-a2c3-c59f1706b793"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122829, 2989, 222, 3, 28, "Input",ExpressionUUID->"b15f8872-8463-cb4a-a3db-a58dc06ff959"],
+Cell[123054, 2994, 166, 2, 32, "Output",ExpressionUUID->"d9059eaa-19fa-ce43-b134-85ec09d44c52"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123257, 3001, 271, 5, 28, "Input",ExpressionUUID->"cacb1b49-2493-d148-94d2-cca72942ceee"],
+Cell[123531, 3008, 388, 8, 32, "Output",ExpressionUUID->"1393ed3c-5c05-cf49-bc25-26a3e8ece212"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123956, 3021, 256, 4, 28, "Input",ExpressionUUID->"691440a3-7d74-9041-a78c-7c9377f8949b"],
+Cell[124215, 3027, 202, 3, 32, "Output",ExpressionUUID->"021eec4f-a14d-d14b-9029-228628904d6e"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[124466, 3036, 212, 4, 37, "Subsubsection",ExpressionUUID->"26c5848a-eb2b-9244-b95f-fe908d239356"],
+Cell[CellGroupData[{
+Cell[124703, 3044, 835, 24, 28, "Input",ExpressionUUID->"a2f5990d-6fee-6c4e-a25f-4384ab2b1c2b"],
+Cell[125541, 3070, 1534, 35, 52, "Output",ExpressionUUID->"9fea3570-05df-be4a-afa3-57089bc84d99"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127112, 3110, 269, 5, 28, "Input",ExpressionUUID->"475b294e-03ba-d243-b367-1e10fdc365c4"],
+Cell[127384, 3117, 388, 8, 32, "Output",ExpressionUUID->"4bd6cfa0-9ce9-b749-a687-7a14a2e4ef18"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127809, 3130, 219, 3, 28, "Input",ExpressionUUID->"6ebf109b-9a06-8b42-9632-e94c4f5d51dd"],
+Cell[128031, 3135, 249, 4, 32, "Output",ExpressionUUID->"3c81400e-8e51-274e-b2e0-7d4331f8d698"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[128329, 3145, 213, 4, 45, "Subsubsection",ExpressionUUID->"6f0744e0-7a56-4743-adc4-0562bb9c0e15"],
+Cell[CellGroupData[{
+Cell[128567, 3153, 721, 21, 28, "Input",ExpressionUUID->"86399acf-822f-ea45-a4c4-44e6baf8e925"],
+Cell[129291, 3176, 1219, 28, 52, "Output",ExpressionUUID->"bf98cbd7-f2ab-de47-acd0-a1ba78b395f7"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
