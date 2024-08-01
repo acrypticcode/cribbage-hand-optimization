@@ -1,0 +1,740 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30311,        732]
+NotebookOptionsPosition[     26180,        671]
+NotebookOutlinePosition[     26620,        688]
+CellTagsIndexPosition[     26577,        685]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cribbage Hand Optimization Calculator", "Title",
+ CellChangeTimes->{{3.931220963132612*^9, 
+  3.931220984722837*^9}},ExpressionUUID->"0777816b-bc3e-0a4f-99c9-\
+5b83f7ce1fde"],
+
+Cell["Generating a deck of cards", "Subtitle",
+ CellChangeTimes->{{3.931475789623665*^9, 
+  3.931475799419256*^9}},ExpressionUUID->"a2780902-cd19-8440-b8a3-\
+d96d88c39e64"],
+
+Cell["\<\
+Cribbage is played with a standard deck of 52 cards. Jokers are removed.\
+\>", "Text",
+ CellChangeTimes->{{3.9314758077317276`*^9, 
+  3.9314758673245296`*^9}},ExpressionUUID->"daf40a91-0fd4-b24b-85bf-\
+bde5d6b4ed1f"],
+
+Cell[TextData[{
+ "In this notebook, a card will be represented as an association that maps \
+attribute names to attribute values. \n\n",
+ Cell[BoxData[GridBox[{
+    {
+     RowBox[{"Card", " ", "Attribute"}], 
+     RowBox[{"Example", " ", "Value"}], "Type"},
+    {"Name", "\"\<Queen of Hearts\>\"", "String"},
+    {"Rank", "\"\<Queen\>\"", "String"},
+    {"Suite", "\"\<Hearts\>\"", "String"},
+    {"Value", "10", "Int"},
+    {"RankInt", "12", "Int"}
+   },
+   GridBoxDividers->{"Columns" -> {{True}}, "Rows" -> {{True}}}]],
+  ExpressionUUID->"bf858978-8096-2a4e-b0ca-c965b7d8457e"],
+ "\n\nThe name, rank, and suite attributes are fairly straightforward. They \
+are stored as strings. Value in cribbage is used for scoring 15s and is also \
+used during the pegging  phase of cribbage, which is not covered in this \
+notebook. Numbered cards have a value equal to their number while jacks, \
+queens, and kings have a value of 10 and aces have a value of 1. RankInt is \
+the numeric equivalent of the rank attribute, labelling cards from 1 (Ace) to \
+13 (King)."
+}], "Text",
+ CellChangeTimes->{{3.93147587735281*^9, 3.9314759206309357`*^9}, {
+   3.9314759599545918`*^9, 3.931475968084257*^9}, {3.931476009246626*^9, 
+   3.9314761878071003`*^9}, {3.931476234577076*^9, 3.9314762662031555`*^9}, 
+   3.931476300801771*^9, {3.9314763343801365`*^9, 3.93147641711454*^9}, {
+   3.931476480293043*^9, 3.931476492162878*^9}, {3.9314765286304665`*^9, 
+   3.9314767128461533`*^9}, {3.9314767960673313`*^9, 3.931476873294073*^9}, {
+   3.9314770551032524`*^9, 
+   3.9314771111095657`*^9}},ExpressionUUID->"945af766-7315-ad46-bd38-\
+b9bf5366215f"],
+
+Cell["\<\
+Establish a relationship between numeric values of card rank and their string \
+equivalents:\
+\>", "CodeText",
+ CellChangeTimes->{{3.931476968056013*^9, 3.9314769992106743`*^9}, {
+  3.931477123541191*^9, 3.931477235017786*^9}, {3.9314772768007298`*^9, 
+  3.9314772952871437`*^9}, {3.9314774082736816`*^9, 
+  3.93147740868478*^9}},ExpressionUUID->"eb73c32c-4c34-d94e-a1fc-\
+d908567782ff"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "ranks"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ranks", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Ace\>\"", ",", "\"\<2\>\"", ",", "\"\<3\>\"", ",", "\"\<4\>\"", ",", 
+     "\"\<5\>\"", ",", "\"\<6\>\"", ",", "\"\<7\>\"", ",", "\"\<8\>\"", ",", 
+     "\"\<9\>\"", ",", "\"\<10\>\"", ",", "\"\<Jack\>\"", ",", 
+     "\"\<Queen\>\"", ",", "\"\<King\>\""}], "}"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.931173340743193*^9, 3.931173419153368*^9}, {
+   3.931173732647236*^9, 3.931173737650833*^9}, {3.931173951536106*^9, 
+   3.9311739613250217`*^9}, {3.9311740336934967`*^9, 3.931174040392855*^9}, {
+   3.9311768071943893`*^9, 3.931176812585118*^9}, {3.931460845146145*^9, 
+   3.9314608500013123`*^9}, 3.9314773138342648`*^9},
+ CellLabel->"In[67]:=",ExpressionUUID->"f4f1f357-1556-f147-909b-567d89c448e2"],
+
+Cell["\<\
+Establish a relationship between numeric values of card suite and their \
+string equivalents:\
+\>", "CodeText",
+ CellChangeTimes->{{3.931477286775305*^9, 3.93147729247657*^9}, {
+  3.931477412788595*^9, 
+  3.93147741326013*^9}},ExpressionUUID->"5a1c175d-d3d7-c64a-8ffb-\
+1a20d0142a27"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "suites"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"suites", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Clubs\>\"", ",", "\"\<Diamonds\>\"", ",", "\"\<Hearts\>\"", ",", 
+     "\"\<Spades\>\""}], "}"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.931173429216055*^9, 3.931173454531648*^9}, {
+   3.931175106049683*^9, 3.931175107062931*^9}, {3.931176815282923*^9, 
+   3.9311768186328697`*^9}, {3.9314608195394287`*^9, 3.9314608237806473`*^9}, 
+   3.931477323517063*^9},
+ CellLabel->"In[69]:=",ExpressionUUID->"b7d6a6dc-ce55-0b4c-82c1-6a4a81f6424a"],
+
+Cell["\<\
+Determines a card\[CloseCurlyQuote]s value attribute from the numeric value \
+of its rank:\
+\>", "CodeText",
+ CellChangeTimes->{{3.9314774291881256`*^9, 3.931477488179554*^9}, {
+  3.9314775632505627`*^9, 
+  3.9314775637364674`*^9}},ExpressionUUID->"0db436b9-8497-7740-b369-\
+2e8daad9e5b0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "findValue"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"findValue", "[", "rank_Integer", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"rank", "<=", "10"}], ",", "rank", ",", "10"}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.931173673525057*^9, 3.9311737079190617`*^9}, {
+  3.931173972717612*^9, 3.931173992149082*^9}, {3.9314608096631355`*^9, 
+  3.931460814009163*^9}},ExpressionUUID->"a06a3841-05e6-fc40-8f4b-\
+c8d3ca1f3454"],
+
+Cell["\<\
+Given numeric values for rank and suite, generates an association \
+representing a single playing card:\
+\>", "CodeText",
+ CellChangeTimes->{{3.931477574663351*^9, 
+  3.931477615017952*^9}},ExpressionUUID->"918ab400-080e-ab4b-ac8d-\
+cf83b2cdd230"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "generateCard"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateCard", "[", 
+    RowBox[{"rank_Integer", ",", "suite_Integer"}], "]"}], ":=", 
+   RowBox[{"<|", 
+    RowBox[{
+     RowBox[{"\"\<name\>\"", "->", 
+      RowBox[{
+       RowBox[{"ranks", "[", 
+        RowBox[{"[", "rank", "]"}], "]"}], "<>", "\"\< of \>\"", "<>", 
+       RowBox[{"suites", "[", 
+        RowBox[{"[", "suite", "]"}], "]"}]}]}], ",", 
+     RowBox[{"\"\<rank\>\"", "->", 
+      RowBox[{"ranks", "[", 
+       RowBox[{"[", "rank", "]"}], "]"}]}], ",", 
+     RowBox[{"\"\<suite\>\"", "->", 
+      RowBox[{"suites", "[", 
+       RowBox[{"[", "suite", "]"}], "]"}]}], ",", "\n", "\t", 
+     RowBox[{"\"\<value\>\"", "->", 
+      RowBox[{"findValue", "[", "rank", "]"}]}], ",", 
+     RowBox[{"\"\<rankInt\>\"", "->", "rank"}]}], "|>"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.931172712084078*^9, 3.931172718319046*^9}, {
+   3.9311727706015205`*^9, 3.9311727879060555`*^9}, {3.9311731977480907`*^9, 
+   3.931173201171995*^9}, {3.931173604463096*^9, 3.931173610436762*^9}, {
+   3.931174016525915*^9, 3.931174072936409*^9}, 3.931175103023134*^9, {
+   3.931175828141157*^9, 3.931175831502016*^9}, {3.93117703666564*^9, 
+   3.931177043816593*^9}, {3.9312748403521385`*^9, 3.931274877866928*^9}, {
+   3.931460802646599*^9, 3.9314608071260986`*^9}, {3.93146149079195*^9, 
+   3.9314615006190567`*^9}, {3.931461543356762*^9, 3.931461556591812*^9}, {
+   3.9314616184005394`*^9, 3.931461677147724*^9}, {3.93147501725955*^9, 
+   3.9314750332965374`*^9}},ExpressionUUID->"354ff282-1de2-524e-a203-\
+652e3fa3951c"],
+
+Cell["Generates an unshuffled deck of 52 playing cards:", "CodeText",
+ CellChangeTimes->{{3.9314776491270943`*^9, 
+  3.931477693642679*^9}},ExpressionUUID->"b7ab84c5-3718-5b42-909a-\
+230deb5f9f8d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "generateOrderedDeck"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateOrderedDeck", "[", "]"}], ":=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"generateCard", "[", 
+       RowBox[{"r", ",", "s"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"s", ",", "4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"r", ",", "13"}], "}"}]}], "]"}], "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.9311727988200836`*^9, 3.93117281149732*^9}, {
+   3.931172898200981*^9, 3.931172914668396*^9}, {3.9311748343592377`*^9, 
+   3.9311749225808945`*^9}, 3.931175098048158*^9, {3.931177331886523*^9, 
+   3.93117733626556*^9}, {3.931177509644678*^9, 3.931177515654285*^9}, {
+   3.93146079388657*^9, 
+   3.931460800249588*^9}},ExpressionUUID->"8cc0801e-5624-6b47-a5b8-\
+1b97bc7a7901"],
+
+Cell[CellGroupData[{
+
+Cell["Scoring a cribbage hand:", "Subtitle",
+ CellChangeTimes->{{3.9314777392212296`*^9, 
+  3.93147774468849*^9}},ExpressionUUID->"1703c01e-88bf-3741-8ba6-\
+e1ceeda10372"],
+
+Cell["\<\
+In order to determine the best cards for the user to discard in the next \
+section, we must first establish function for evaluating how many points each \
+cribbage hand is worth, assuming we know the value of the cut card.\
+\>", "Text",
+ CellChangeTimes->{{3.9314778647422028`*^9, 3.931477891184618*^9}, {
+  3.9314779295454464`*^9, 
+  3.9314779936518803`*^9}},ExpressionUUID->"71d288b4-f50e-5b47-af22-\
+dc6eaa74a7de"],
+
+Cell[TextData[StyleBox["Determine the total value of all 15s in the hand:", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.9314785657418423`*^9, 3.9314785864569225`*^9}, {
+  3.931478805988516*^9, 
+  3.931478814526848*^9}},ExpressionUUID->"e851db33-9e5f-184f-8775-\
+38dcac36c6d7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "score15s"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"score15s", "[", 
+    RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"cards", "=", 
+        RowBox[{"Append", "[", 
+         RowBox[{"hand", ",", "cutCard"}], "]"}]}], ",", "sums"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"sums", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", "\"\<value\>\"", "]"}], "&"}], "/@", "#"}], 
+          "]"}], "&"}], "/@", 
+        RowBox[{"Subsets", "[", "cards", "]"}]}]}], ";", "\n", "\t", 
+      RowBox[{"2", "*", 
+       RowBox[{"Count", "[", 
+        RowBox[{"sums", ",", "15"}], "]"}]}]}]}], "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.9311752176860085`*^9, 3.9311752680361214`*^9}, {
+   3.9311753087986965`*^9, 3.931175321305422*^9}, {3.9311754059959164`*^9, 
+   3.931175409740026*^9}, {3.931175793728222*^9, 3.9311758371455975`*^9}, {
+   3.931175910542991*^9, 3.9311759375614834`*^9}, {3.931176125395488*^9, 
+   3.931176147906231*^9}, {3.93117670667676*^9, 3.931176715362355*^9}, 
+   3.931195576896799*^9, {3.93119582411875*^9, 3.93119584891396*^9}, {
+   3.931195903364496*^9, 3.931195920022007*^9}, {3.93119931517194*^9, 
+   3.9311993169711018`*^9}, {3.931274650961798*^9, 3.931274652580939*^9}, {
+   3.931275879135641*^9, 3.931275959557718*^9}, {3.931460775610485*^9, 
+   3.931460781709961*^9}, {3.931475043310961*^9, 
+   3.9314750456763515`*^9}},ExpressionUUID->"91eaa115-1de4-1f4b-873b-\
+042dc52cc5c9"],
+
+Cell["\<\
+Return 1 point if a nob is present in the hand or 0 otherwise:\
+\>", "CodeText",
+ CellChangeTimes->{{3.931478594661846*^9, 3.931478645166481*^9}, {
+  3.93147873145636*^9, 
+  3.9314787964123077`*^9}},ExpressionUUID->"bb820e5f-8045-0d46-acfd-\
+f8b01fb20bad"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "scoreNob"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scoreNob", "[", 
+    RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "cutSuite", "}"}], ",", 
+     RowBox[{
+      RowBox[{"cutSuite", "=", 
+       RowBox[{"cutCard", "[", "\"\<suite\>\"", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"AnyTrue", "[", 
+         RowBox[{"hand", ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "[", "\"\<rank\>\"", "]"}], "==", "\"\<Jack\>\""}],
+              "&&", 
+             RowBox[{
+              RowBox[{"#", "[", "\"\<suite\>\"", "]"}], "==", "cutSuite"}]}], 
+            ")"}], "&"}]}], "]"}], ",", "1", ",", "0"}], "]"}]}]}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.931195734946503*^9, 3.93119574788283*^9}, 
+   3.9311959155464325`*^9, {3.931195950917517*^9, 3.9311959905601788`*^9}, {
+   3.931196097580637*^9, 3.931196180782339*^9}, {3.931196304343227*^9, 
+   3.9311964063484783`*^9}, {3.9311968871051273`*^9, 3.93119694534876*^9}, {
+   3.9311974772781887`*^9, 3.93119748280575*^9}, {3.931460766601574*^9, 
+   3.931460773282791*^9}, {3.9314750606064014`*^9, 
+   3.9314750617360096`*^9}},ExpressionUUID->"7b9f9246-9db0-4243-aa79-\
+43f985f27dab"],
+
+Cell["Determine the total value of all pairs in the hand:", "CodeText",
+ CellChangeTimes->{{3.931478718543373*^9, 
+  3.9314787235660095`*^9}},ExpressionUUID->"db537de3-b9e0-ae48-909b-\
+d206b304a106"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "scorePairs"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scorePairs", "[", 
+    RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"cards", "=", 
+       RowBox[{"Append", "[", 
+        RowBox[{"hand", ",", "cutCard"}], "]"}]}], "}"}], ",", 
+     RowBox[{"2", "*", 
+      RowBox[{"Total", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "[", "\"\<rank\>\"", "]"}], "==", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "[", "\"\<rank\>\"", "]"}]}], 
+            ")"}], ",", "1", ",", "0"}], "]"}], "&"}], "/@", 
+        RowBox[{"Subsets", "[", 
+         RowBox[{"cards", ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], "]"}]}]}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.9311975385072956`*^9, 3.931197539198614*^9}, {
+  3.931197702428038*^9, 3.931197716296461*^9}, {3.931197962214007*^9, 
+  3.931198079598095*^9}, {3.931198184396057*^9, 3.931198202332884*^9}, {
+  3.931198788349217*^9, 3.9311987925754356`*^9}, {3.931199051965103*^9, 
+  3.9311990595209866`*^9}, {3.931199095625839*^9, 3.931199105847046*^9}, {
+  3.9311991825218487`*^9, 3.93119921982321*^9}, {3.931199280440279*^9, 
+  3.931199284238098*^9}, {3.9312760922375145`*^9, 3.931276128172144*^9}, {
+  3.931276161628496*^9, 3.931276175318062*^9}, {3.931460755305277*^9, 
+  3.931460764309532*^9}},ExpressionUUID->"9e2ff39d-697b-1746-b7c5-\
+bb9ad8498717"],
+
+Cell["\<\
+Determine the value of a flush if one is present in the hand:\
+\>", "CodeText",
+ CellChangeTimes->{{3.9314787439240913`*^9, 3.9314787686135406`*^9}, {
+  3.931478825505085*^9, 
+  3.931478847645262*^9}},ExpressionUUID->"688d5032-792e-ec41-b34e-\
+99686cdb7887"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "scoreFlush"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"scoreFlush", "[", 
+   RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "firstCardSuite", "}"}], ",", 
+    RowBox[{
+     RowBox[{"firstCardSuite", "=", 
+      RowBox[{
+       RowBox[{"hand", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", "\"\<suite\>\"", "]"}]}], ";", 
+     "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"AllTrue", "[", 
+        RowBox[{
+         RowBox[{"hand", "[", 
+          RowBox[{"[", 
+           RowBox[{"2", ";;", "4"}], "]"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"#", "[", "\"\<suite\>\"", "]"}], "==", 
+            "firstCardSuite"}], ")"}], "&"}]}], "]"}], ",", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"cutCard", "[", "\"\<suite\>\"", "]"}], "==", 
+          "firstCardSuite"}], ",", "5", ",", "4"}], "]"}], ",", "0"}], 
+      "]"}]}]}], "]"}]}]}], "Code",
+ CellChangeTimes->{{3.9312069085589733`*^9, 3.9312069471592903`*^9}, 
+   3.931206982968563*^9, {3.931207055588583*^9, 3.9312070880216217`*^9}, {
+   3.931210553363708*^9, 3.9312106129071865`*^9}, {3.931210843939018*^9, 
+   3.931210846701777*^9}, {3.9314607466324844`*^9, 3.9314607528097363`*^9}, {
+   3.9314750817758274`*^9, 
+   3.931475082728348*^9}},ExpressionUUID->"50675c31-75d4-dc4e-b463-\
+9a66a0e91d8a"],
+
+Cell["Determine  the  total  value  of  all  runs in  the  hand :", "CodeText",
+ CellChangeTimes->{{3.931478882161188*^9, 
+  3.9314788930159016`*^9}},ExpressionUUID->"b43138a7-1011-474c-bc90-\
+abb09c69a2d9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "scoreRuns"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"scoreRuns", "[", 
+   RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"cards", "=", 
+       RowBox[{"Append", "[", 
+        RowBox[{"hand", ",", "cutCard"}], "]"}]}], ",", "rankList", ",", 
+      "possibleRun", ",", "possibleRunLength", ",", "runExists", ",", 
+      "score"}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"rankList", "=", 
+      RowBox[{"Sort", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", "\"\<rankInt\>\"", "]"}], "&"}], "/@", "cards"}], 
+       "]"}]}], ";", 
+     RowBox[{"possibleRun", "=", 
+      RowBox[{"Last", "@", 
+       RowBox[{"SortBy", "[", 
+        RowBox[{
+         RowBox[{"Split", "[", 
+          RowBox[{"rankList", ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#2", "-", "#1"}], "<", "2"}], "&"}]}], "]"}], ",", 
+         "Length"}], "]"}]}]}], ";", "\n", "\t", 
+     RowBox[{"possibleRunLength", "=", 
+      RowBox[{"1", "+", 
+       RowBox[{"Last", "[", "possibleRun", "]"}], "-", 
+       RowBox[{"First", "[", "possibleRun", "]"}]}]}], ";", "\n", "\t", 
+     RowBox[{"runExists", "=", 
+      RowBox[{"possibleRunLength", ">=", "3"}]}], ";", 
+     RowBox[{"score", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{"runExists", ",", 
+        RowBox[{"possibleRunLength", "*", 
+         RowBox[{"Times", "@@", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Last", "[", "#", "]"}], "&"}], "/@", 
+            RowBox[{"Tally", "[", "possibleRun", "]"}]}], ")"}]}]}], ",", 
+        "0"}], "]"}]}], ";", "\n", "\t", "score"}]}], "]"}]}]}], "Code",
+ CellChangeTimes->{{3.9312110537127*^9, 3.931211098479956*^9}, {
+   3.931217886778751*^9, 3.931217937683047*^9}, {3.931218896440231*^9, 
+   3.931218903643516*^9}, {3.9312192122043743`*^9, 3.931219257308685*^9}, {
+   3.931273051779791*^9, 3.931273106240232*^9}, {3.931273155641744*^9, 
+   3.9312732539062347`*^9}, {3.931273347149952*^9, 3.931273411295402*^9}, {
+   3.9312737460454907`*^9, 3.9312738205748606`*^9}, 3.931273852973078*^9, {
+   3.931273922757879*^9, 3.9312739332419786`*^9}, {3.931274742147373*^9, 
+   3.931274781983958*^9}, {3.931275600486166*^9, 3.931275603543064*^9}, {
+   3.931276325926645*^9, 3.931276397741335*^9}, {3.9314607351022377`*^9, 
+   3.9314607436670456`*^9}, {3.9314751084760075`*^9, 
+   3.931475129472948*^9}},ExpressionUUID->"15de7f31-f3b8-f444-8fa7-\
+0cd95d360a26"],
+
+Cell["Tally the total value of the hand:", "CodeText",
+ CellChangeTimes->{{3.931478910730921*^9, 
+  3.931478962885828*^9}},ExpressionUUID->"a615b227-535e-0142-8c0b-\
+c63fe7c1c457"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "scoreHand"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scoreHand", "[", 
+    RowBox[{"hand_List", ",", "cutCard_Association"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"score15s", "[", 
+     RowBox[{"hand", ",", "cutCard"}], "]"}], "+", 
+    RowBox[{"scoreNob", "[", 
+     RowBox[{"hand", ",", "cutCard"}], "]"}], "+", 
+    RowBox[{"scorePairs", "[", 
+     RowBox[{"hand", ",", "cutCard"}], "]"}], "+", 
+    RowBox[{"scoreFlush", "[", 
+     RowBox[{"hand", ",", "cutCard"}], "]"}], "+", "\n", "\t", 
+    RowBox[{"scoreRuns", "[", 
+     RowBox[{"hand", ",", "cutCard"}], "]"}]}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.93127651735881*^9, 3.931276636980657*^9}, {
+  3.9314607207981586`*^9, 3.93146073256678*^9}, {3.93147515158943*^9, 
+  3.931475178918581*^9}},ExpressionUUID->"cec9ac73-3150-e34a-b81c-\
+5a6154ee4585"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Recommending optimal cards to discard", "Subtitle",
+ CellChangeTimes->{{3.9314790215074406`*^9, 
+  3.9314790921784286`*^9}},ExpressionUUID->"63ce4d1a-94bb-5846-a94f-\
+fb14c4800fb6"],
+
+Cell["\<\
+Determines the average score that a hand would earn among all of the \
+possibilities for the cut card:\
+\>", "CodeText",
+ CellChangeTimes->{{3.931479431632889*^9, 3.931479436099205*^9}, {
+  3.9314795258781776`*^9, 3.9314795931336555`*^9}, {3.931479667561325*^9, 
+  3.931479685868223*^9}},ExpressionUUID->"85d8a315-2bc4-1d4a-953a-\
+a60824821975"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "averageHandScore"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"averageHandScore", "[", 
+    RowBox[{"hand_List", ",", "restOfDeck_List"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Total", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"scoreHand", "[", 
+         RowBox[{"hand", ",", "#"}], "]"}], "&"}], "/@", "restOfDeck"}], 
+      "]"}], "/", 
+     RowBox[{"Length", "[", "restOfDeck", "]"}]}], "//", "N"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.931280684579637*^9, 3.931280843830629*^9}, {
+  3.931281201546629*^9, 3.931281204971796*^9}, {3.931281291362305*^9, 
+  3.931281291784258*^9}, {3.931460709512945*^9, 
+  3.931460716268339*^9}},ExpressionUUID->"ac7f09e1-ab41-2043-8026-\
+ca08b16c465f"],
+
+Cell["\<\
+Suggests that the user discard the cards that would result in the hand with \
+the highest average score\
+\>", "CodeText",
+ CellChangeTimes->{{3.9314797151354027`*^9, 
+  3.9314797416286583`*^9}},ExpressionUUID->"7766068f-3a87-4f42-8bb8-\
+3057bf0ad2cf"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "suggestDiscards"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"suggestDiscards", "[", "hand_List", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"restOfDeck", ",", "bestHand"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"restOfDeck", "=", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{
+         RowBox[{"generateOrderedDeck", "[", "]"}], ",", 
+         RowBox[{"Alternatives", "@@", "hand"}]}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"bestHand", "=", 
+       RowBox[{"First", "[", 
+        RowBox[{"MaximalBy", "[", 
+         RowBox[{
+          RowBox[{"Subsets", "[", 
+           RowBox[{"hand", ",", 
+            RowBox[{"{", "4", "}"}]}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"averageHandScore", "[", 
+            RowBox[{"#", ",", "restOfDeck"}], "]"}], "&"}]}], "]"}], "]"}]}], 
+      ";", "\n", "\t", 
+      RowBox[{"Complement", "[", 
+       RowBox[{"hand", ",", "bestHand"}], "]"}]}]}], "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.9312800260861797`*^9, 3.9312800998924313`*^9}, {
+  3.931280306302414*^9, 3.931280367434086*^9}, {3.9312804221130686`*^9, 
+  3.93128042519445*^9}, {3.931281556455532*^9, 3.9312815916240044`*^9}, {
+  3.9312816536594524`*^9, 3.931281689834484*^9}, {3.9312817773248253`*^9, 
+  3.9312817932219353`*^9}, {3.9312842962732673`*^9, 3.931284302307345*^9}, {
+  3.9314606640106583`*^9, 3.9314607063207874`*^9}, {3.9314649304947624`*^9, 
+  3.9314649399784527`*^9}, {3.931464971675083*^9, 3.931464989314644*^9}, {
+  3.9314751964868946`*^9, 3.931475206496521*^9}, {3.9314775395865784`*^9, 
+  3.9314775401832848`*^9}},ExpressionUUID->"669c9827-0d0c-a645-b2b1-\
+f4cdd388f09b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Additional helper functions", "Subtitle",
+ CellChangeTimes->{{3.931479762516712*^9, 
+  3.931479785880518*^9}},ExpressionUUID->"a94a3b9c-b794-054a-867f-\
+21bf41c2cef8"],
+
+Cell["\<\
+These functions are not needed for the suggestDiscards function, but may be \
+useful for working with or expanding on the cribbage calculator project.\
+\>", "Text",
+ CellChangeTimes->{{3.931479818119417*^9, 
+  3.931479948911686*^9}},ExpressionUUID->"7da5b391-83ee-4a45-bbcf-\
+ad5783f82571"],
+
+Cell["Generates a deck whose cards are in a random order:", "CodeText",
+ CellChangeTimes->{{3.931479000177946*^9, 3.9314790055864754`*^9}, {
+  3.9314799640534325`*^9, 
+  3.931479979775261*^9}},ExpressionUUID->"42b2036b-8c98-2249-a080-\
+8a049410142a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", " ", "generateShuffledDeck"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateShuffledDeck", "[", "]"}], ":=", " ", 
+   RowBox[{"RandomSample", "[", 
+    RowBox[{
+     RowBox[{"generateOrderedDeck", "[", "]"}], ",", "52"}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.9311729188859215`*^9, 3.931172925480926*^9}, {
+   3.931174936628418*^9, 3.931174953072262*^9}, {3.931175016165844*^9, 
+   3.9311750180235*^9}, {3.931175065041588*^9, 3.931175096148527*^9}, 
+   3.931177433164408*^9, {3.9314607842549896`*^9, 
+   3.931460791445732*^9}},ExpressionUUID->"02ee5ebd-53fc-474c-9572-\
+0fc5cab0bd41"],
+
+Cell["Removes a list of cards from a shuffled deck", "CodeText",
+ CellChangeTimes->{{3.9314799989625187`*^9, 
+  3.9314800290752544`*^9}},ExpressionUUID->"e2b9a779-66e6-ca48-9e5f-\
+2a9cc8439965"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "  ", "removeFromDeck"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"removeFromDeck", "[", "toRemove_List", "]"}], ":=", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"generateShuffledDeck", "[", "]"}], ",", 
+     RowBox[{"Alternatives", "@@", "toRemove"}]}], "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.9314691371231194`*^9, 3.931469140358015*^9}, {
+  3.9314691871177063`*^9, 3.9314692010868416`*^9}, {3.9314729280638313`*^9, 
+  3.931472973958084*^9}, {3.931473109254675*^9, 3.9314731110276184`*^9}, {
+  3.9314800213941345`*^9, 
+  3.9314800244665203`*^9}},ExpressionUUID->"89e6e11b-2150-ce4d-b9de-\
+77578d7232d8"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152, 651.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"cc6e9f66-8b28-7145-a235-573bb7480949"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 180, 3, 98, "Title",ExpressionUUID->"0777816b-bc3e-0a4f-99c9-5b83f7ce1fde"],
+Cell[763, 27, 172, 3, 53, "Subtitle",ExpressionUUID->"a2780902-cd19-8440-b8a3-d96d88c39e64"],
+Cell[938, 32, 226, 5, 35, "Text",ExpressionUUID->"daf40a91-0fd4-b24b-85bf-bde5d6b4ed1f"],
+Cell[1167, 39, 1629, 31, 275, "Text",ExpressionUUID->"945af766-7315-ad46-bd38-b9bf5366215f"],
+Cell[2799, 72, 397, 8, 38, "CodeText",ExpressionUUID->"eb73c32c-4c34-d94e-a1fc-d908567782ff"],
+Cell[3199, 82, 856, 16, 68, "Code",ExpressionUUID->"f4f1f357-1556-f147-909b-567d89c448e2"],
+Cell[4058, 100, 294, 7, 38, "CodeText",ExpressionUUID->"5a1c175d-d3d7-c64a-8ffb-1a20d0142a27"],
+Cell[4355, 109, 592, 13, 68, "Code",ExpressionUUID->"b7d6a6dc-ce55-0b4c-82c1-6a4a81f6424a"],
+Cell[4950, 124, 299, 7, 38, "CodeText",ExpressionUUID->"0db436b9-8497-7740-b369-2e8daad9e5b0"],
+Cell[5252, 133, 511, 13, 68, "Code",ExpressionUUID->"a06a3841-05e6-fc40-8f4b-c8d3ca1f3454"],
+Cell[5766, 148, 257, 6, 38, "CodeText",ExpressionUUID->"918ab400-080e-ab4b-ac8d-cf83b2cdd230"],
+Cell[6026, 156, 1632, 34, 86, "Code",ExpressionUUID->"354ff282-1de2-524e-a203-652e3fa3951c"],
+Cell[7661, 192, 197, 3, 38, "CodeText",ExpressionUUID->"b7ab84c5-3718-5b42-909a-230deb5f9f8d"],
+Cell[7861, 197, 872, 21, 68, "Code",ExpressionUUID->"8cc0801e-5624-6b47-a5b8-1b97bc7a7901"],
+Cell[CellGroupData[{
+Cell[8758, 222, 171, 3, 53, "Subtitle",ExpressionUUID->"1703c01e-88bf-3741-8ba6-e1ceeda10372"],
+Cell[8932, 227, 427, 8, 58, "Text",ExpressionUUID->"71d288b4-f50e-5b47-af22-dc6eaa74a7de"],
+Cell[9362, 237, 278, 5, 35, "Text",ExpressionUUID->"e851db33-9e5f-184f-8775-38dcac36c6d7"],
+Cell[9643, 244, 1662, 38, 86, "Code",ExpressionUUID->"91eaa115-1de4-1f4b-873b-042dc52cc5c9"],
+Cell[11308, 284, 266, 6, 38, "CodeText",ExpressionUUID->"bb820e5f-8045-0d46-acfd-f8b01fb20bad"],
+Cell[11577, 292, 1395, 34, 86, "Code",ExpressionUUID->"7b9f9246-9db0-4243-aa79-43f985f27dab"],
+Cell[12975, 328, 199, 3, 38, "CodeText",ExpressionUUID->"db537de3-b9e0-ae48-909b-d206b304a106"],
+Cell[13177, 333, 1710, 41, 68, "Code",ExpressionUUID->"9e2ff39d-697b-1746-b7c5-bb9ad8498717"],
+Cell[14890, 376, 268, 6, 38, "CodeText",ExpressionUUID->"688d5032-792e-ec41-b34e-99686cdb7887"],
+Cell[15161, 384, 1493, 39, 86, "Code",ExpressionUUID->"50675c31-75d4-dc4e-b463-9a66a0e91d8a"],
+Cell[16657, 425, 207, 3, 38, "CodeText",ExpressionUUID->"b43138a7-1011-474c-bc90-abb09c69a2d9"],
+Cell[16867, 430, 2568, 60, 138, "Code",ExpressionUUID->"15de7f31-f3b8-f444-8fa7-0cd95d360a26"],
+Cell[19438, 492, 180, 3, 38, "CodeText",ExpressionUUID->"a615b227-535e-0142-8c0b-c63fe7c1c457"],
+Cell[19621, 497, 874, 21, 86, "Code",ExpressionUUID->"cec9ac73-3150-e34a-b81c-5a6154ee4585"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20532, 523, 187, 3, 53, "Subtitle",ExpressionUUID->"63ce4d1a-94bb-5846-a94f-fb14c4800fb6"],
+Cell[20722, 528, 355, 7, 38, "CodeText",ExpressionUUID->"85d8a315-2bc4-1d4a-953a-a60824821975"],
+Cell[21080, 537, 778, 21, 68, "Code",ExpressionUUID->"ac7f09e1-ab41-2043-8026-ca08b16c465f"],
+Cell[21861, 560, 261, 6, 38, "CodeText",ExpressionUUID->"7766068f-3a87-4f42-8bb8-3057bf0ad2cf"],
+Cell[22125, 568, 1722, 38, 103, "Code",ExpressionUUID->"669c9827-0d0c-a645-b2b1-f4cdd388f09b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23884, 611, 173, 3, 53, "Subtitle",ExpressionUUID->"a94a3b9c-b794-054a-867f-21bf41c2cef8"],
+Cell[24060, 616, 300, 6, 35, "Text",ExpressionUUID->"7da5b391-83ee-4a45-bbcf-ad5783f82571"],
+Cell[24363, 624, 250, 4, 38, "CodeText",ExpressionUUID->"42b2036b-8c98-2249-a080-8a049410142a"],
+Cell[24616, 630, 654, 15, 68, "Code",ExpressionUUID->"02ee5ebd-53fc-474c-9572-0fc5cab0bd41"],
+Cell[25273, 647, 194, 3, 38, "CodeText",ExpressionUUID->"e2b9a779-66e6-ca48-9e5f-2a9cc8439965"],
+Cell[25470, 652, 682, 15, 68, "Code",ExpressionUUID->"89e6e11b-2150-ce4d-b9de-77578d7232d8"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
