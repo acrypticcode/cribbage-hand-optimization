@@ -14,5 +14,7 @@ See the full rules of cribbage here: [bicyclecards.com/how-to-play/cribbage/](ht
 ## Approach
 There are three ways in which players can score points: by scoring their own hand, by scoring the crib as the dealer, and during the pegging round. The information the program is given is the cards in the players hand and the cards that have not yet been revealed and discarded (i.e. they are either in the deck or the opponenent's hand). There are fifteen possible combinations of two cards the player can discard from their six-card hand. Each of these possible pairs of discards is given a score for each of the three ways the player can score points, representing the average point differential obtained compared to their opponent assuming their opponent is also playing optimally. These three scores are then summed and the pair is matched with the highest total score is recommended to the player for discard.
 
+It is probable that this project approach will not lead to a complete optimization of scoring the maximum hand in cribbage. I will likely be able to optimize only a part of the scoring process. The rest can perhaps be estimated through heuristics.
+
 ## Progess
 Allowed user to optimize cribbage hand considering only the personal scoring of their hand and not the score of the cards the crib or the score from the pegging round. The next step is likely to be accounting for the cards in the crib. This will involve the determination of optimal strategies using game theory.
